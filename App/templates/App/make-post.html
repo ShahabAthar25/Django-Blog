@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<title>PythonOverFlow - Create A Post</title>
 
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-outline-danger">Post</button>
+</form>
 
 {% endblock %}
