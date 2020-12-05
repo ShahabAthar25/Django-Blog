@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Post, FAQ
+from .models import Post, FAQ, aboutmodel
 
 # Create your views here.
 
@@ -9,7 +9,7 @@ class home_view(ListView):
     template_name = 'App/home.html'
 
 class about_view(ListView):
-    model = Post
+    model = aboutmodel
     template_name = 'App/about.html'
 
 class FAQ_view(ListView):
