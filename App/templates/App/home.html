@@ -6,7 +6,9 @@
 
 {% for post in object_list %}
     <div class="card">
-        <h5 class="card-header">{{ post.title }}</h5>
+        <a href="{% url 'post_detail' post.pk %}" style="text-decoration: none; color: black">
+            <h5 class="card-header">{{ post.title }}</h5>
+        </a>
         <div class="card-body">
             <p class="card-text"><i>{{ post.context }}</i></p>
             <hr>
