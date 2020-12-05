@@ -3,48 +3,32 @@
 {% block content %}
 
 <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="/about" style="color: gray;">About ME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/about/FAQ">FAQ</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">FAQ</h5>
-      <p class="card-text">I will answer the most common questions Here</p>
-      <a href="/" class="btn btn-primary">Back To Home</a>
-    </div>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="/about/FAQ" style="color: gray;">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/about/FAQ">FAQ</a>
+      </li>
+    </ul>
   </div>
+  <div class="card-body">
+    <h5 class="card-title">FAQ</h5>
+    <p class="card-text">Maybe You Can Find Your Answer Here.</p>
+    <a href="/" class="btn btn-primary">Back To Home</a>
+  </div>
+</div>
 
+{% for FAquestion in object_list %}
   <br>
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">What To Do If I Forgot My Password?</h5>
+      <h5 class="card-title">{{ FAquestion.question }}</h5>
       <hr>
-      <p class="card-text">If You Forgot Your Password You Can Click On Forgot Password On The Login Page.</p>
+      <p class="card-text">{{ FAquestion.Answer }}</p>
     </div>
   </div>
-
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Whats New?</h5>
-      <hr>
-      <p class="card-text">Home Page Added<br>About And FAQ Pages Added<br>Video And Written Courses Will Be Added</p>
-    </div>
-  </div>
-
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">What Will Be Added In The New Update?</h5>
-      <hr>
-      <p class="card-text">Video And Written Courses Will Be Added</p>
-    </div>
-  </div>
+{% endfor %}
 
 {% endblock %}
