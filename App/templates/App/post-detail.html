@@ -1,0 +1,20 @@
+{% extends "App/base.html" %}
+
+{% block content %}
+
+<title>PythonOverFlow</title>
+
+<br>
+<div class="card">
+    <h5 class="card-header">{{ post.title }}</h5>
+    <div class="card-body">
+        <p class="card-text"><i>{{ post.context }}</i></p>
+        <hr>
+        <p class="card-text">By {{ post.author }} On {{ post.date_created }}</p>
+        <hr>
+        <a href="/" type="button" class="btn btn-outline-danger">Back To Home</a>
+    </div>
+</div>
+<br>
+
+{% endblock %}

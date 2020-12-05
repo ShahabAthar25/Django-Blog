@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% for about in object_list %}
 <div class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
@@ -14,10 +15,11 @@
       </ul>
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{ title }}</h5>
-      <p class="card-text">Hello,My name is shahab and i have over 4 years of coding experience most of which in python but i also have experience in html and css.I use Django And Flask To Make My Website Like This One.</p>
+      <h5 class="card-title">{{ about.title }}</h5>
+      <p class="card-text">{{ about.description }}</p>
       <a href="/" class="btn btn-primary">Back To Home</a>
     </div>
   </div>
+{% endfor %}
 
 {% endblock %}
