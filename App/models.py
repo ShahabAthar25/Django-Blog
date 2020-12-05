@@ -11,3 +11,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=60)
+    Answer = models.TextField()
+
+    def __str__(self):
+        return self.question
