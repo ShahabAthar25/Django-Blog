@@ -1,31 +1,33 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from .models import Post
 
 # Create your views here.
 
-def home(request):
-    properties = {}
-    return render(request, 'App/home.html', properties)
+class home_view(ListView):
+    model = Post
+    template_name = 'App/home.html'
 
-def about(request):
-    properties = {}
-    return render(request, 'App/about.html', properties)
+class about_view(ListView):
+    model = Post
+    template_name = 'App/about.html'
 
-def FAQ(request):
-    properties = {}
-    return render(request, 'App/FAQ.html', properties)
+class FAQ_view(ListView):
+    model = Post
+    template_name = 'App/FAQ.html'
 
-def makepost(request):
-    properties = {}
-    return render(request, 'App/makepost.html', properties)
+class make_post_view(ListView):
+    model = Post
+    template_name = 'App/make-post.html'
 
-def profile(request):
-    properties = {}
-    return render(request, 'App/profile.html', properties)
+class profile_view(ListView):
+    model = Post
+    template_name = 'App/profile.html'
 
-def login(request):
-    properties = {}
-    return render(request, 'App/login.html', properties)
+class login_view(ListView):
+    model = Post
+    template_name = 'App/login.html'
 
-def signup(request):
-    properties = {}
-    return render(request, 'App/signup.html', properties)
+class sign_up_view(ListView):
+    model = Post
+    template_name = 'App/signup.html'
