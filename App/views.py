@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post, FAQ, About
 
 # Create your views here.
@@ -16,9 +16,10 @@ class FAQ_view(ListView):
     model = FAQ
     template_name = 'App/FAQ.html'
 
-class make_post_view(ListView):
+class make_post_view(CreateView):
     model = Post
     template_name = 'App/make-post.html'
+    fields = '__all__'
 
 class profile_view(ListView):
     model = Post
