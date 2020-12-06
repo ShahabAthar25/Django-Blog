@@ -9,6 +9,7 @@ from django.urls import reverse_lazy
 class home_view(ListView):
     model = Post
     template_name = 'App/home.html'
+    ordering = ['-date_created']
 
 class about_view(ListView):
     model = About
@@ -27,14 +28,6 @@ class make_post_view(CreateView):
 class profile_view(ListView):
     model = Post
     template_name = 'App/profile.html'
-
-class login_view(ListView):
-    model = Post
-    template_name = 'App/login.html'
-
-class sign_up_view(ListView):
-    model = Post
-    template_name = 'App/signup.html'
 
 class post_detail_view(DetailView):
     model = Post
