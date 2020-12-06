@@ -10,4 +10,5 @@ urlpatterns = [
     path('login', login_view.as_view()),
     path('signup', sign_up_view.as_view()),
     path('post-detail/<int:pk>', post_detail_view.as_view(), name='post_detail'),
+    path('edit-detail/edit/<int:pk>', post_edit_view.as_view(), name='post_edit'),
 ]

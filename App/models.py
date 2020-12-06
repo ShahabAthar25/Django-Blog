@@ -14,7 +14,7 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
     
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('post_detail', args=(str(self.id)))
 
 class FAQ(models.Model):
     question = models.CharField(max_length=60)

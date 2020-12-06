@@ -13,6 +13,8 @@
         <p class="card-text">By {{ post.author }} On {{ post.date_created }}</p>
         <hr>
         <a href="/" type="button" class="btn btn-outline-danger">Back To Home</a>
+        <hr>
+        <a href="{% url 'post_edit' post.pk %}" class="btn btn-outline-danger">Edit</a>
     </div>
 </div>
 <br>

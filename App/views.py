@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, FAQ, About
-from .forms import Postform
+from .forms import Postform, EditPostForm
 
 # Create your views here.
 
@@ -38,3 +38,9 @@ class sign_up_view(ListView):
 class post_detail_view(DetailView):
     model = Post
     template_name = 'App/post-detail.html'
+
+class post_edit_view(UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'App/edit-post.html'
+    #fields = ['title', 'context']
