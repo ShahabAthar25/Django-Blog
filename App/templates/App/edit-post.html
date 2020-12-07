@@ -4,14 +4,20 @@
 
 <title>PythonOverFlow - Edit Post</title>
 
-<br>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-outline-danger">Update</button>
-        <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>
-    </form>
-</div>
-
+{% if user.is_authenticated %}
+    <br>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-danger">Update</button>
+                <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>
+        </form>
+    </div>
+{% else %}
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Nice Try But No
+    </div>
+{% endif %}
 {% endblock %}
