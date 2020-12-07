@@ -2,19 +2,20 @@
 
 {% block content %}
 
-<title>PythonOverFlow - Login</title>
+<title>PythonOverFlow - Signup</title>
 
 {% if user.is_authenticated %}
     <br>
     <div class="alert alert-danger" role="alert">
-        You Are Alredy Loged In!
+        You Alredy Have An Account And You Are Loged In!
     </div>
 {% else %}
     <div class="form-group">
+        <h1>Signup</h1>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="btn btn-outline-danger">Login</button>
+            <button class="btn btn-outline-danger">Signup</button>
         </form>
     </div>
 {% endif %}
