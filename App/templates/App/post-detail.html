@@ -10,7 +10,7 @@
     <div class="card-body">
         <p class="card-text"><i>{{ post.context }}</i></p>
         <hr>
-        <p class="card-text">By {{ post.author }} On {{ post.date_created }}</p>
+        <p class="card-text">By {{ post.author }} On {{ post.date_created }} - {{ post.category }}</p>
         <hr>
         <a href="/" type="button" class="btn btn-outline-danger">Back To Home</a>
         <a href="{% url 'post_edit' post.pk %}" class="btn btn-outline-danger" style="float: right;">Edit</a>
