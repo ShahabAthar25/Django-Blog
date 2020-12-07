@@ -23,7 +23,7 @@ class Postform(forms.ModelForm):
 class EditPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'context')
+        fields = ('title', 'context', 'category')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter The Post Title'}),
