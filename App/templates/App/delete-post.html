@@ -4,37 +4,45 @@
 
 <title>PythonOverFlow - Delete Post</title>
 
-<br>
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        <div class="alert alert-dark" role="alert">
-            Note: This Blog Will Be Deleted Forever And Can Not Be Recovered.
-        </div>
-        <hr>
-        <h3>Information:</h3>
-        <br>
-        <h5 class="card-title" style="color: gray;">Title:</h5>
-        <h5 class="card-title" style="margin-left: 50px;">{{ post.title }}</h5>
-        <hr>
-        <h5 class="card-title" style="color: gray;">User:</h5>
-        <h5 class="card-title" style="margin-left: 50px;">{{ post.author }}</h5>
-        <hr>
-        <h5 class="card-title" style="color: gray;">Created On:</h5>
-        <h5 class="card-title" style="margin-left: 50px;">{{ post.date_created }}</h5>
-        <hr>
-        <h5 class="card-title" style="color: gray;">Context:</h5>
-        <h5 class="card-title" style="margin-left: 50px;">{{ post.context }}</h5>
-        <br>
-        <br>
-        <br>
-        <h4 class="card-title">Are You Sure You Want To Delete This Post?</h4>
-        <br>
-        <br>
-        <a href="/" class="btn btn-outline-danger">Cancel</a>
-        <button class="btn btn-outline-danger" style="float: right;">Delete</button>
-        <hr>
-    </form>
-</div>
+{% if user.is_authenticated %}
+    <br>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="alert alert-dark" role="alert">
+                Note: This Blog Will Be Deleted Forever And Can Not Be Recovered.
+            </div>
+            <hr>
+            <h3>Information:</h3>
+            <br>
+            <h5 class="card-title" style="color: gray;">Title:</h5>
+            <h5 class="card-title" style="margin-left: 50px;">{{ post.title }}</h5>
+            <hr>
+            <h5 class="card-title" style="color: gray;">User:</h5>
+            <h5 class="card-title" style="margin-left: 50px;">{{ post.author }}</h5>
+            <hr>
+            <h5 class="card-title" style="color: gray;">Created On:</h5>
+            <h5 class="card-title" style="margin-left: 50px;">{{ post.date_created }}</h5>
+            <hr>
+            <h5 class="card-title" style="color: gray;">Context:</h5>
+            <h5 class="card-title" style="margin-left: 50px;">{{ post.context }}</h5>
+            <br>
+            <br>
+            <br>
+            <h4 class="card-title">Are You Sure You Want To Delete This Post?</h4>
+            <br>
+            <br>
+            <a href="/" class="btn btn-outline-danger">Cancel</a>
+            <button class="btn btn-outline-danger" style="float: right;">Delete</button>
+            <hr>
+        </form>
+    </div>
+{% else %}
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Nice Try But No
+    </div>
+
+{% endif %}
 
 {% endblock %}

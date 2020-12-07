@@ -2,5 +2,13 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+{% else %}
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Nice Try! Please Log In
+    </div>
+{% endif %}
 
 {% endblock %}
