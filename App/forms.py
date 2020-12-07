@@ -1,5 +1,7 @@
 from django import forms
-from .models import Post
+from .models import Post, Category
+
+choices = Category.objects.all().values_list('name', 'name')
 
 class Postform(forms.ModelForm):
     class Meta:
