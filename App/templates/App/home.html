@@ -14,7 +14,9 @@
             <p class="card-text"><i>{{ post.context|slice:":200"}}</i></p>
             <hr>
             {% if user.is_authenticated %}
-                <a href="{% url 'post_edit' post.pk %}" type="button" class="btn btn-outline-danger" style="float: right;">Edit</a>
+                {% if user.id == post.author.id %}
+                    <a href="{% url 'post_edit' post.pk %}" type="button" class="btn btn-outline-danger" style="float: right;">Edit</a>
+                {% endif %}
             {% endif %}
             <p class="card-text">By {{ post.author }} On {{ post.date_created }} - <a href="{% url 'post_category' post.category %}">{{ post.category }}</a></p>
         </div>
