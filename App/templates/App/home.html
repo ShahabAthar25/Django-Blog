@@ -16,7 +16,7 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'post_edit' post.pk %}" type="button" class="btn btn-outline-danger" style="float: right;">Edit</a>
             {% endif %}
-            <p class="card-text">By {{ post.author }} On {{ post.date_created }} - {{ post.category }}</p>
+            <p class="card-text">By {{ post.author }} On {{ post.date_created }} - <a href="{% url 'post_category' post.category %}">{{ post.category }}</a></p>
         </div>
     </div>
     <br>

@@ -5,9 +5,10 @@
 <title>PythonOverFlow</title>
 
 <br>
-<h3>Showing Result For {{ cate }}:</h3>
 <br>
 {% if category_post %}
+    <h3>Showing Result For {{ cate }}:</h3>
+    <br>
     {% for post in category_post %}
         <div class="card">
             <a href="{% url 'post_detail' post.pk %}" style="text-decoration: none; color: black">
@@ -26,10 +27,10 @@
     {% endfor %}
 {% else %}
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">This Url Does Not Exist!</h4>
+        <h4 class="alert-heading">This Post Category Does Not Exist!</h4>
         <p>The Category Did Not Exist</p>
         <hr>
-        <p class="mb-0">Try Going To An Existing Url Go To Home Page: <a href="/">Go Home</a></p>
+        <p class="mb-0">Try Going To Home Page: <a href="/">Go Home</a></p>
     </div>
 {% endif %}
 
