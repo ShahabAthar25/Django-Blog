@@ -8,10 +8,19 @@
     <br>
     <div class="form-group">
         <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-outline-danger">Update</button>
-                <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>
+            {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-outline-danger">Update</button>
+                    <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>
+                    {% else %}
+                        <br>
+                        <div class="alert alert-danger" role="alert">
+                            Nice Try! Please Log In
+                        </div>
+                {% endif %}
+            {% endif %}
         </form>
     </div>
 {% else %}
