@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, FAQ, About, Category
 from .forms import Postform, EditPostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -66,7 +67,10 @@ class post_detail_view(DetailView):
     def get_context_data(self, *args, **kwargs):
         cate_menu = Category.objects.all()
         context = super(post_detail_view, self).get_context_data(*args, **kwargs)
+        databasecheck = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_like = databasecheck.total_like()
         context['cate_menu'] = cate_menu
+        context['total_like'] = total_like
         return context
 
 class post_edit_view(UpdateView):
@@ -95,3 +99,8 @@ def CategoryView(request, cate):
     category_post = Post.objects.filter(category=cate)
     cate_menu = Category.objects.all()
     return render(request, 'App/category.html', {'cate':cate, 'category_post':category_post, 'cate_menu':cate_menu})
+
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post_detail', args=[str(pk)]))

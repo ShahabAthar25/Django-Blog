@@ -22,4 +22,13 @@
 </div>
 <br>
 
+<hr>
+
+{% if user.is_authenticated %}
+    <form action="{% url 'like_post' post.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-outline-warning btn-sm" style="margin-left: 15px;">Like</button> - {{ total_like }} Likes
+    </form>
+{% endif %}
+
 {% endblock %}
