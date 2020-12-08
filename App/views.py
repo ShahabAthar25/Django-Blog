@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, FAQ, About
+from .models import Post, FAQ, About, Category
 from .forms import Postform, EditPostForm
 from django.urls import reverse_lazy
 
@@ -11,13 +11,31 @@ class home_view(ListView):
     template_name = 'App/home.html'
     ordering = ['-date_created']
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(home_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 class about_view(ListView):
     model = About
     template_name = 'App/about.html'
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(about_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 class FAQ_view(ListView):
     model = FAQ
     template_name = 'App/FAQ.html'
+
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(FAQ_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
 
 class make_post_view(CreateView):
     model = Post
@@ -25,24 +43,55 @@ class make_post_view(CreateView):
     template_name = 'App/make-post.html'
     #fields = '__all__'
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(make_post_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 class profile_view(ListView):
     model = Post
     template_name = 'App/profile.html'
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(profile_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 class post_detail_view(DetailView):
     model = Post
     template_name = 'App/post-detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(post_detail_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
 
 class post_edit_view(UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = 'App/edit-post.html'
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(post_edit_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 class delete_view(DeleteView):
     model = Post
     template_name = 'App/delete-post.html'
     success_url = reverse_lazy('home')
 
+    def get_context_data(self, *args, **kwargs):
+        cate_menu = Category.objects.all()
+        context = super(delete_view, self).get_context_data(*args, **kwargs)
+        context['cate_menu'] = cate_menu
+        return context
+
 def CategoryView(request, cate):
-    category_post = Post.objects.filter(category=cate.replace('-', ' '))
-    return render(request, 'App/category.html', {'cate':cate, 'category_post':category_post})
+    category_post = Post.objects.filter(category=cate)
+    cate_menu = Category.objects.all()
+    return render(request, 'App/category.html', {'cate':cate, 'category_post':category_post, 'cate_menu':cate_menu})
