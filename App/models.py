@@ -19,7 +19,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     context = models.TextField()
     date_created = models.DateField(auto_now=True)
-    category = models.CharField(max_length=30, default='Coding')
+    category = models.CharField(max_length=30, default='Python')
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
