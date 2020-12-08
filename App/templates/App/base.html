@@ -19,6 +19,19 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
+              <!-- Category Dropdown -->
+              {% if cate_menu %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for item in cate_menu %}
+                    <a class="dropdown-item" href="{% url 'post_category' item %}">{{ item }}</a>
+                  {% endfor %}
+                </div>
+              </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="/about">About And FAQ</a>
               </li>
@@ -50,6 +63,18 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
+              {% if cate_menu %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for item in cate_menu %}
+                    <a class="dropdown-item" href="{% url 'post_category' item %}">{{ item }}</a>
+                  {% endfor %}
+                </div>
+              </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="/about">About And FAQ</a>
               </li>
