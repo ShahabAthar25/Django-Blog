@@ -11,6 +11,7 @@
             {% if user.is_authenticated %}
                 {% if user.id == post.author.id %}
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form.as_p }}
                     <button class="btn btn-outline-danger">Update</button>
                     <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>

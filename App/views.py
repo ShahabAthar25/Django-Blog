@@ -50,16 +50,6 @@ class make_post_view(CreateView):
         context['cate_menu'] = cate_menu
         return context
 
-class profile_view(ListView):
-    model = Post
-    template_name = 'App/profile.html'
-
-    def get_context_data(self, *args, **kwargs):
-        cate_menu = Category.objects.all()
-        context = super(profile_view, self).get_context_data(*args, **kwargs)
-        context['cate_menu'] = cate_menu
-        return context
-
 class post_detail_view(DetailView):
     model = Post
     template_name = 'App/post-detail.html'

@@ -10,8 +10,8 @@
         You Alredy Have An Account And You Are Loged In!
     </div>
 {% else %}
+    <br>
     <div class="form-group">
-        <h1>Signup</h1>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}

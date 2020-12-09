@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'App',
     'registration',
+    'ckeditor',
 
 ]
 

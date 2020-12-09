@@ -11,7 +11,7 @@
             <h5 class="card-header">{{ post.title }}</h5>
         </a>
         <div class="card-body">
-            <p class="card-text"><i>{{ post.context|slice:":200"}}</i></p>
+            <p class="card-text"><i>{{ post.context|slice:":200"|safe }}</i></p>
             <hr>
             {% if user.is_authenticated %}
                 {% if user.id == post.author.id %}
