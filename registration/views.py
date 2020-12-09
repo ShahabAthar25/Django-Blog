@@ -2,19 +2,19 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.urls import reverse_lazy
-from .forms import SignUpForm
+from .forms import SignUpForm, ProfileForm
 
 # Create your views here.
 
 class UserRegisterView(generic.CreateView):
     form_class = SignUpForm
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('signup')
+    success_url = reverse_lazy('login')
 
 class profile_view(generic.UpdateView):
-    form_class = UserChangeForm
+    form_class = ProfileForm
     template_name = 'registration/edit_profile.html'
-    success_url = reverse_lazy('signup')
+    success_url = reverse_lazy('home')
 
     def get_object(self):
         return self.request.user
