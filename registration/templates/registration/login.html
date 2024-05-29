@@ -1,22 +1,15 @@
-{% extends "app/base.html" %}
-
-{% block content %}
+{% extends "App/base.html" %} {% block content %}
 
 <title>PythonOverFlow - Login</title>
 
 {% if user.is_authenticated %}
-    <br>
-    <div class="alert alert-danger" role="alert">
-        You Are Alredy Loged In!
-    </div>
+<br />
+<div class="alert alert-danger" role="alert">You Are Alredy Loged In!</div>
 {% else %}
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-outline-danger">Login</button>
-        </form>
-    </div>
-{% endif %}
-
-{% endblock %}
+<div class="form-group">
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="btn btn-outline-danger">Login</button>
+  </form>
+</div>
+{% endif %} {% endblock %}

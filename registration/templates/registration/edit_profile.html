@@ -1,21 +1,12 @@
-{% extends "app/base.html" %}
-
-{% block content %}
-
-{% if user.is_authenticated %}
-    <br>
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-outline-danger">Update</button>
-        </form>
-    </div>
+{% extends "App/base.html" %} {% block content %} {% if user.is_authenticated %}
+<br />
+<div class="form-group">
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button class="btn btn-outline-danger">Update</button>
+  </form>
+</div>
 {% else %}
-    <br>
-    <div class="alert alert-danger" role="alert">
-        Nice Try! Please Log In
-    </div>
-{% endif %}
-
-{% endblock %}
+<br />
+<div class="alert alert-danger" role="alert">Nice Try! Please Log In</div>
+{% endif %} {% endblock %}

@@ -1,28 +1,24 @@
-{% extends "app/base.html" %}
-
-{% block content %}
-
-{% for about in object_list %}
+{% extends "App/base.html" %} {% block content %} {% for about in object_list %}
 
 <title>PythonOverFlow - About ME</title>
 
-<div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/FAQ" style="color: gray;">FAQ</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ about.title }}</h5>
-      <p class="card-text">{{ about.description }}</p>
-      <a href="/" class="btn btn-primary">Back To Home</a>
-    </div>
+<div class="card text-center" style="margin-top: 10px">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active">About Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about/FAQ" style="color: gray">FAQ</a>
+      </li>
+    </ul>
   </div>
-{% endfor %}
-
-{% endblock %}
+  <div class="card-body">
+    <h5 class="card-title">{{ about.title }}</h5>
+    <div style="text-align: left">
+      <p class="card-text">{{ about.description | linebreaks }}</p>
+    </div>
+    <a href="/" class="btn btn-primary">Back To Home</a>
+  </div>
+</div>
+{% endfor %} {% endblock %}

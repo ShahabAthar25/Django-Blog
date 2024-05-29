@@ -1,33 +1,28 @@
-{% extends "app/base.html" %}
-
-{% block content %}
+{% extends "App/base.html" %} {% block content %}
 
 <title>PythonOverFlow - Edit Post</title>
 
 {% if user.is_authenticated %}
-    <br>
-    <div class="form-group">
-        <form method="POST">
-            {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                    {% csrf_token %}
-                    {{ form.media }}
-                    {{ form.as_p }}
-                    <button class="btn btn-outline-danger">Update</button>
-                    <a href="{% url 'post_delete' post.pk %}" class="btn btn-outline-danger" style="float: right; margin-left: 15px;">Delete</a>
-                    {% else %}
-                        <br>
-                        <div class="alert alert-danger" role="alert">
-                            Nice Try! Please Log In
-                        </div>
-                {% endif %}
-            {% endif %}
-        </form>
-    </div>
+<br />
+<div class="form-group">
+  <form method="POST">
+    {% if user.is_authenticated %} {% if user.id == post.author.id %}
+    <!-- prettier-ignore -->
+    {% csrf_token %} {{ form.media }} {{ form.as_p }}
+    <button class="btn btn-outline-danger">Update</button>
+    <a
+      href="{% url 'post_delete' post.pk %}"
+      class="btn btn-outline-danger"
+      style="float: right; margin-left: 15px"
+      >Delete</a
+    >
+    {% else %}
+    <br />
+    <div class="alert alert-danger" role="alert">Nice Try! Please Log In</div>
+    {% endif %} {% endif %}
+  </form>
+</div>
 {% else %}
-    <br>
-    <div class="alert alert-danger" role="alert">
-        Nice Try But No
-    </div>
-{% endif %}
-{% endblock %}
+<br />
+<div class="alert alert-danger" role="alert">Nice Try But No</div>
+{% endif %} {% endblock %}
