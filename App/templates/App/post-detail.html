@@ -1,38 +1,54 @@
-{% extends "App/base.html" %}
+{% extends "App/base.html" %} {% block content %}
 
-{% block content %}
+<title>PythonOverFlow - {{ post.title }}</title>
 
-<title>PythonOverFlow - {{ post.title }} </title>
-
-<br>
+<br />
 <div class="card">
-    <h5 class="card-header">{{ post.title }}</h5>
-    <div class="card-body">
-        <p class="card-text"><i>{{ post.context|safe }}</i></p>
-        <hr>
-        <p class="card-text">By {{ post.author }} On {{ post.date_created }} - {{ post.category }}</p>
-        <hr>
-        <a href="/" type="button" class="btn btn-outline-danger">Back To Home</a>
-        {% if user.is_authenticated %}
-            {% if user.id == post.author.id %}
-                <a href="{% url 'post_edit' post.pk %}" class="btn btn-outline-danger" style="float: right;">Edit</a>
-            {% endif %}
-        {% endif %}
-    </div>
+  <h5 class="card-header">{{ post.title }}</h5>
+  <div class="card-body">
+    <p class="card-text"><i>{{ post.context|safe }}</i></p>
+    <hr />
+    <p class="card-text">
+      By {{ post.author }} On {{ post.date_created }} - {{ post.category }}
+    </p>
+    <hr />
+    <a href="/" type="button" class="btn btn-outline-danger">Back To Home</a>
+    {% if user.is_authenticated %} {% if user.id == post.author.id %}
+    <a
+      href="{% url 'post_edit' post.pk %}"
+      class="btn btn-outline-danger"
+      style="float: right"
+      >Edit</a
+    >
+    {% endif %} {% endif %}
+  </div>
 </div>
-<br>
+<br />
 
-<hr>
+<hr />
 
 {% if user.is_authenticated %}
-    <form action="{% url 'like_post' post.pk %}" method="POST">
-        {% csrf_token %}
-        {% if liked %}
-            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-outline-danger" style="margin-left: 15px;">Liked</button> - {{ total_like }} Likes
-        {% else %}
-            <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-outline-danger" style="margin-left: 15px;">Like</button> - {{ total_like }} Likes
-        {% endif %}
-    </form>
-{% endif %}
-
-{% endblock %}
+<form action="{% url 'like_post' post.pk %}" method="POST">
+  {% csrf_token %} {% if liked %}
+  <button
+    type="submit"
+    name="post_id"
+    value="{{ post.id }}"
+    class="btn btn-outline-danger"
+    style="margin-left: 15px"
+  >
+    Liked
+  </button>
+  - {{ total_like }} Likes {% else %}
+  <button
+    type="submit"
+    name="post_id"
+    value="{{ post.id }}"
+    class="btn btn-outline-danger"
+    style="margin-left: 15px"
+  >
+    Like
+  </button>
+  - {{ total_like }} Likes {% endif %}
+</form>
+{% endif %} {% endblock %}

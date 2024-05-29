@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django import forms
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Enter Your New Password'}))
-    first_name = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Enter Your New Password'}))
-    last_name = forms.CharField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Enter Your New Password'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder':'Enter Your Email'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Your First Name'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Your Last Name'}))
 
     class Meta:
         model = User

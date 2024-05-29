@@ -1,27 +1,33 @@
-{% extends "App/base.html" %}
-
-{% block content %}
+{% extends "App/base.html" %} {% block content %}
 
 <title>PythonOverFlow</title>
 
-<br>
+<br />
 {% for post in object_list %}
-    <div class="card">
-        <a href="{% url 'post_detail' post.pk %}" style="text-decoration: none; color: black">
-            <h5 class="card-header">{{ post.title }}</h5>
-        </a>
-        <div class="card-body">
-            <p class="card-text"><i>{{ post.context|slice:":200"|safe }}</i></p>
-            <hr>
-            {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                    <a href="{% url 'post_edit' post.pk %}" type="button" class="btn btn-outline-danger" style="float: right;">Edit</a>
-                {% endif %}
-            {% endif %}
-            <p class="card-text">By {{ post.author }} On {{ post.date_created }} - <a href="{% url 'post_category' post.category %}">{{ post.category }}</a></p>
-        </div>
-    </div>
-    <br>
-{% endfor %}
-
-{% endblock %}
+<div class="card">
+  <a
+    href="{% url 'post_detail' post.pk %}"
+    style="text-decoration: none; color: black"
+  >
+    <h5 class="card-header">{{ post.title }}</h5>
+  </a>
+  <div class="card-body">
+    <p class="card-text"><i>{{ post.context|slice:":200"|safe }}</i></p>
+    <hr />
+    {% if user.is_authenticated %} {% if user.id == post.author.id %}
+    <a
+      href="{% url 'post_edit' post.pk %}"
+      type="button"
+      class="btn btn-outline-danger"
+      style="float: right"
+      >Edit</a
+    >
+    {% endif %} {% endif %}
+    <p class="card-text">
+      By {{ post.author }} On {{ post.date_created }} -
+      <a href="{% url 'post_category' post.category %}">{{ post.category }}</a>
+    </p>
+  </div>
+</div>
+<br />
+{% endfor %} {% endblock %}
