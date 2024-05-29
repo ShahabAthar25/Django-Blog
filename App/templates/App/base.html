@@ -39,10 +39,13 @@
                 <a class="nav-link" href="/make-post">Make Post</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/registration/profile">Profile</a>
+                <a class="nav-link" href="/registration/profile/">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/registration/logout">Log Out</a>
+                <form method="post" action="{% url 'logout-user' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link" style="background: none; border: none;">Log Out</button>
+                </form>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
