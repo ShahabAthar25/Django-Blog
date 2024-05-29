@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from .forms import SignUpForm, ProfileForm, UserPasswordChangeForm
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -24,3 +25,8 @@ class profile_view(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
+def logout_user(request):
+    logout(request)
+    
+    return redirect("home")
